@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  soc-analyst-api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: autonomous-ai-soc-analyst
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DEFAULT_REASONING_PROVIDER=mock
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=llama3.2
+      - REDIS_URL=redis://redis:6379/0
+      - ABUSEIPDB_API_KEY=${ABUSEIPDB_API_KEY:-}
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY:-}
+      - OTX_API_KEY=${OTX_API_KEY:-}
+    depends_on:
+      - redis
+    volumes:
+      - ../reports:/app/reports
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  redis:
+    image: redis:7-alpine
+    container_name: soc-analyst-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: soc-analyst-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    profiles:
+      - full-local-llm
+
+volumes:
+  redis_data:
+  ollama_models:

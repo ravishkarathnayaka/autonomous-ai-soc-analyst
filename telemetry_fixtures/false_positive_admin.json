@@ -1,0 +1,27 @@
+{
+  "incident_name": "Scheduled Administrative Disk Maintenance and Backup",
+  "target_asset": "SRV-BACKUP-01",
+  "events": [
+    {
+      "EventID": 1,
+      "UtcTime": "2026-10-14 01:00:00.000",
+      "ProcessId": 2340,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell.exe -ExecutionPolicy Bypass -NoProfile -File C:\\AdminScripts\\Weekly_Disk_Defrag_Backup.ps1 -TargetVolume E:\\Backups",
+      "ParentProcessId": 804,
+      "ParentImage": "C:\\Windows\\System32\\taskhostw.exe",
+      "User": "CORP\\svc-backup",
+      "Computer": "SRV-BACKUP-01",
+      "Hashes": "SHA256=BA7816BF8F01CFEA414140DE5DAE2223B00361A396177A9CB410FF61F20015AD"
+    },
+    {
+      "EventID": 11,
+      "UtcTime": "2026-10-14 01:01:15.220",
+      "ProcessId": 2340,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "TargetFilename": "E:\\Backups\\Weekly_System_State_20261014.bak",
+      "Computer": "SRV-BACKUP-01",
+      "User": "CORP\\svc-backup"
+    }
+  ]
+}

