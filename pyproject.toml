@@ -37,6 +37,12 @@ addopts = "-ra -q --tb=short"
 testpaths = ["tests"]
 pythonpath = ["."]
 
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["analyst_core*", "api*"]
+exclude = ["tests*", "docker*", "telemetry_fixtures*", "reports*"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
